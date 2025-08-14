@@ -1,0 +1,143 @@
+/* General Setup */
+body {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    background-color: #2c000f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Animated Background */
+.animated-bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -2;
+    background: linear-gradient(45deg, #3C0008, #5a0c18, #3C0008, #800000);
+    background-size: 400% 400%;
+    animation: gradientAnimation 25s ease-in-out infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Story Container */
+#story-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    color: #f0e6d2;
+    animation: fadeInContainer 1.5s ease-out forwards;
+    z-index: 1;
+}
+
+@keyframes fadeInContainer {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Teddy Bear Animation */
+#story-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid #E6A4B4;
+    margin-bottom: 25px;
+    object-fit: cover;
+    animation: breathingBear 4s ease-in-out infinite alternate;
+}
+
+@keyframes breathingBear {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* Text and Buttons */
+#story-text {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    min-height: 100px;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+#choices-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.choice-btn {
+    background: transparent;
+    color: #f0e6d2;
+    border: 2px solid #800000;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+}
+
+.choice-btn:hover {
+    background: #800000;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.5);
+}
+
+@keyframes slideUpFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rose Animation */
+#animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.floating-icon {
+    position: absolute;
+    bottom: -100px; /* Start below the screen */
+    font-size: 2.5rem; /* Make roses a bit bigger */
+    opacity: 0.7;
+    animation: floatUp 12s linear forwards;
+}
+
+@keyframes floatUp {
+    from {
+        bottom: -100px;
+        opacity: 0.7;
+        transform: translateX(0) rotate(0deg);
+    }
+    to {
+        bottom: 110vh; /* Go completely off the top */
+        opacity: 0;
+        transform: translateX(var(--x-end)) rotate(720deg); /* Move sideways and spin */
+    }
+}
